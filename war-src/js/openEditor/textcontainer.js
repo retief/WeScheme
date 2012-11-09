@@ -149,36 +149,36 @@ var WeSchemeTextContainer;
 					theme: (options.theme || "scheme"),
 					mode: "scheme2",
 					extraKeys: km,
-					lineNumbers: (typeof (options.lineNumbers) !== 'undefined'? options.lineNumbers :  true),
+					lineNumbers: (typeof (options.lineNumbers) !== undefined ? options.lineNumbers :  true),
 					lineWrapping: true,
-					matchBrackets: true,
+					matchBrackets: options.matchBrackets !== undefined ? options.matchBrackets : true,
 					value: options.content || "",
-					readOnly: (typeof (options.readOnly) !== 'undefined'? options.readOnly : false),
+					readOnly: (typeof (options.readOnly) !== undefined ? options.readOnly : false)
+				});
+		this.editor.on("change",function() {
+				that.behaviorE.sendEvent(that.editor.getValue());
+			});
+        // Under IE 7, some of these style settings appear to die.
+        try { this.editor.getWrapperElement().style.width = options.width || "100%"; } catch (e) {}
+        if (! (options.dynamicHeight)) {
+            // If dynamic height, we'll be doing something special below.
+		     try { this.editor.getWrapperElement().style.height = options.height || "100%"; } catch(e) {}
+        }
 
-					onChange: function() {
-						that.behaviorE.sendEvent(that.editor.getValue());
-					}});
-            // Under IE 7, some of these style settings appear to die.
-            try { this.editor.getWrapperElement().style.width = options.width || "100%"; } catch (e) {}
-            if (! (options.dynamicHeight)) {
-                // If dynamic height, we'll be doing something special below.
-		try { this.editor.getWrapperElement().style.height = options.height || "100%"; } catch(e) {}
-            }
+        try {
+		    this.editor.getScrollerElement().style.width = "100%";
+        } catch (e) {}
 
-            try {
-		this.editor.getScrollerElement().style.width = "100%";
-            } catch (e) {}
-
-            // Setting overflow to visible to auto-resize the editor to fit
-            // its content.  It may be that IE doesn't support setting some
-            // of these attributes, so we are really crazy about putting
-            // exception handling around this.
-            if (options.dynamicHeight) {
-                try { this.editor.getScrollerElement().style.height = 'auto'; } catch(e) {}
-                try { this.editor.getScrollerElement().style.overflow = 'visible'; } catch(e) {}
-            } else {
- 		try { this.editor.getScrollerElement().style.height = "100%"; } catch(e) {}
-            }
+        // Setting overflow to visible to auto-resize the editor to fit
+        // its content.  It may be that IE doesn't support setting some
+        // of these attributes, so we are really crazy about putting
+        // exception handling around this.
+        if (options.dynamicHeight) {
+           try { this.editor.getScrollerElement().style.height = 'auto'; } catch(e) {}
+           try { this.editor.getScrollerElement().style.overflow = 'visible'; } catch(e) {}
+        } else {
+ 		    try { this.editor.getScrollerElement().style.height = "100%"; } catch(e) {}
+        }
 	
 	    this.editor.refresh();
 	    onSuccess.call(that, that);
@@ -358,11 +358,7 @@ var WeSchemeTextContainer;
 
 	CodeMirrorImplementation.prototype.focus = function() {
 		this.editor.focus();
-		/*
-		var start = this.editor.getCursor(true);
-		var end = this.editor.getCursor(false);
-		this.editor.setSelection(start,end);
-		*/
+		this.editor.refresh();
 	};
 	
 	CodeMirrorImplementation.prototype.refresh = function() {
