@@ -40,6 +40,7 @@
    (lambda (p)
      (and (file-exists? p)
           (regexp-match #px".js$" (path->string (file-name-from-path p)))
+          (not (regexp-match #px"test" (path->string p)))
           (not (regexp-match #px"[.-]min.js$" (path->string (file-name-from-path p))))))
    (simplify-path path)))
 
