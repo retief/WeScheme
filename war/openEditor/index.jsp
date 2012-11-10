@@ -236,7 +236,7 @@
 
 
 
-        <div id="design-recipe-form" z-index: 10;">
+        <div id="design-recipe-form" style="position: absolute; left: -1000px; z-index: 10;">
 	  <div class="section" id="design-recipe-contract">
             <div id="design-recipe-contract_wrapper">
               <span class="spacer" style="width: 15px;">;</span>
