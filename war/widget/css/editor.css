@@ -1,23 +1,24 @@
-div#design-recipe-form .CodeMirror {background: white; border: solid 1px black;}
-div#design-recipe-form .CodeMirror-scroll {height: 300px;}
+div#design-recipe-form .CodeMirror {background: white; border: solid 1px black;height: 300px;}
+div#design-recipe-form .CodeMirror-scroll {}
 div#design-recipe-form .activeline{background:	wheat !important;}
 
 div#design-recipe-form div#form .CodeMirror{border: none;}
 div#design-recipe-form .CodeMirror-scroll{
-    height: auto;
     overflow-y: hidden;
     overflow-x: hidden;
     width: auto;
     border: 1px inset;
     font-weight: normal;
-    min-width: 100px;
-    max-width: 450px;
 }
 
 div#design-recipe-form .CodeMirror{
+    height: auto;
     display: inline-block;
     margin: 5px 0px;   
-    vertical-align: top;}
+    vertical-align: top;
+    min-width: 100px;
+    max-width: 450px;
+}
 
 div#design-recipe-form .CodeMirror-lines {
     padding: .1em;

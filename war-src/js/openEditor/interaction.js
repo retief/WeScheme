@@ -183,13 +183,17 @@ WeSchemeInteractions = (function () {
             function(container) {
                 var newId = makeFreshId();
                 that.interactions.previousInteractionsTextContainers[newId] = container;
-                that.interactions.runCode(nextCode, newId, function() {});
+                that.interactions.runCode(nextCode, newId, function() {that.refresh()});
             });
         //calling that.focus() doesn't work - the codeMirror box looks focused, but you can't type into it
         //if I focus on something else first, everything works fine
         n.focus();
         that.focus();
     };
+    
+    Prompt.prototype.refresh = function () {
+    	this.textContainer.refresh();
+    }
 
     // TODO: historyPreviousIsOk and historyNextIsOk don't have to be methods.
 
@@ -709,7 +713,9 @@ WeSchemeInteractions = (function () {
             e.stopPropagation();
             e.preventDefault();
             that.moveCursor(currItem.ref(0), parseInt(currItem.ref(1)));
+            alert("after moveCursor");
             that.focus(currItem.ref(0));
+            alert("after focus");
             for(i = 0; i < pieces.length; i++){
                 catchAttention(pieces[i].styleName);
             }

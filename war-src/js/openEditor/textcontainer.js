@@ -249,7 +249,7 @@ var WeSchemeTextContainer;
 		
 		var highlightedArea = this.editor.markText(this.handleAndColumnToPos(startHandleAndColumn), 
 					this.handleAndColumnToPos(endHandleAndColumn), 
-					name);
+					{className: name});
 
  		this.highlightedAreas.push(highlightedArea);
  		this.moveCursor(offset, span);
@@ -274,6 +274,7 @@ var WeSchemeTextContainer;
  			this.editor.setCursor({line: li + 1, ch: col});
  			this.editor.setCursor({line: li, ch: col});
  		}
+ 		//this.editor.scrollIntoView();
 	};
 
 	CodeMirrorImplementation.prototype.setSelection = function(id, offset, line, column, span) {
@@ -358,7 +359,6 @@ var WeSchemeTextContainer;
 
 	CodeMirrorImplementation.prototype.focus = function() {
 		this.editor.focus();
-		this.editor.refresh();
 	};
 	
 	CodeMirrorImplementation.prototype.refresh = function() {

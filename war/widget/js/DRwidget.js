@@ -160,11 +160,11 @@ var initializeWidget = (function () {
                                     { matchBrackets: true,
 				      extraKeys: km,
 				      mode: "scheme2",
-                                      value: "",
-                                      onChange: onChange,
-                                      onBlur: onBlur,
-                                      onFocus: onFocus
+                                      value: ""
                                     });
+        this.codeMirrorElement.on("change",onChange);
+        this.codeMirrorElement.on("blur",onBlur);
+        this.codeMirrorElement.on("focus",onFocus);
     };
 
     ValidatedTextInputElement.prototype.isOk = function() {
@@ -206,7 +206,7 @@ var initializeWidget = (function () {
 
 
 
-    // editor: CodeMirror2 editor
+    // editor: CodeMirror3 editor
     var initializeWidget = function(editor, tokenizer) {
         
         var contract_name, contract_domain, contract_range,
@@ -733,8 +733,10 @@ var initializeWidget = (function () {
             var node= document.getElementById('design-recipe-form');
             connect(node, "click", function(event){event.target.focus(); event.stop(); return false;});
             editor.addWidget(pos, node, true);	// display the DR widget just below the line, and scroll so it's visible
-            hlLine = editor.setLineClass(editor.getCursor().line, "activeline");
+            editor.removeLineClass(editor.getCursor().line,"text");
+            hlLine = editor.addLineClass(editor.getCursor().line, "text", "activeline");
             contract_name.focus();
+            editor.refresh();
         };
         
         
@@ -749,6 +751,7 @@ var initializeWidget = (function () {
             }
             editor.setSelection(pos, {line: pos.line+numLines, ch:0});
             editor.focus();
+            editor.refresh();
         };
         
         var clearForm = function (){
@@ -771,9 +774,10 @@ var initializeWidget = (function () {
  
        var hideWidget = function (widget){
             document.getElementById('design-recipe-form').style.left = '-1000px';
-            editor.setLineClass(hlLine, "");
+            editor.removeLineClass(hlLine, "text");
             editor.focus();
             clearForm();
+            editor.refresh();
         };
         
         
