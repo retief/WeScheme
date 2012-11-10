@@ -722,6 +722,8 @@ var initializeWidget = (function () {
         //////////////////////////////////////////////////////////////////////////////////// 
         
         var hlLine;
+        var drWidgetHandle;
+        var drWidgetNode;
         
         // add a demo DR widget at cursor location
         var showWidget = function(){
@@ -729,10 +731,10 @@ var initializeWidget = (function () {
 
             // document.getElementById('design-recipe-insertCode').disabled = true;
             pos = editor.getCursor(true);		// get the current cursor location
-            pos.ch = 0;							// force the character to 0
-            var node= document.getElementById('design-recipe-form');
-            connect(node, "click", function(event){event.target.focus(); event.stop(); return false;});
-            editor.addWidget(pos, node, true);	// display the DR widget just below the line, and scroll so it's visible
+            drWidgetNode = drWidgetNode || document.getElementById('design-recipe-form');
+            //drWidgetNode.style.display="block";
+            connect(drWidgetNode, "click", function(event){event.target.focus(); event.stop(); return false;});
+            drWidgetHandle = editor.addLineWidget(pos.line, drWidgetNode);	// display the DR widget just below the line, and scroll so it's visible
             editor.removeLineClass(editor.getCursor().line,"text");
             hlLine = editor.addLineClass(editor.getCursor().line, "text", "activeline");
             contract_name.focus();
@@ -773,7 +775,8 @@ var initializeWidget = (function () {
         };
  
        var hideWidget = function (widget){
-            document.getElementById('design-recipe-form').style.left = '-1000px';
+            //document.getElementById('design-recipe-form').style.left = '-1000px';
+    	   	editor.removeLineWidget(drWidgetHandle);
             editor.removeLineClass(hlLine, "text");
             editor.focus();
             clearForm();
