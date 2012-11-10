@@ -24,6 +24,13 @@ div#design-recipe-form .CodeMirror-lines {
     padding: .1em;
 }
 
+div#design-recipe-outer {
+	padding-bottom: 30px;
+	padding-right: 30px;
+	background: none;
+	border: none;
+}
+
 div#design-recipe-form {
 	border:			solid 1px black;
 	min-height:		160px;

@@ -236,64 +236,65 @@
 
 
 
-        <div id="design-recipe-form" style="position: absolute; left: -1000px; z-index: 10;">
-	  <div class="section" id="design-recipe-contract">
-            <div id="design-recipe-contract_wrapper">
-              <span class="spacer" style="width: 15px;">;</span>
-              <textarea id="design-recipe-name"></textarea>
-              <span>:</span>
-              <textarea id="design-recipe-domain"></textarea>
-              <span>-></span>
-              <textarea id="design-recipe-range"></textarea>
-            </div>
-            <span class="error" id="design-recipe-contract_error"></span>
-	  </div>
+	<div id="design-recipe-outer" style="position: absolute; left: -1000px; z-index: 10;">
+    	<div id="design-recipe-form">
+	  		<div class="section" id="design-recipe-contract">
+            	<div id="design-recipe-contract_wrapper">
+              		<span class="spacer" style="width: 15px;">;</span>
+              		<textarea id="design-recipe-name"></textarea>
+              		<span>:</span>
+              		<textarea id="design-recipe-domain"></textarea>
+              		<span>-></span>
+              		<textarea id="design-recipe-range"></textarea>
+            	</div>
+            	<span class="error" id="design-recipe-contract_error"></span>
+	  		</div>
 
-          <div class="section" id="design-recipe-examples">
-            <div id="design-recipe-example1_wrapper">
-              <span class="spacer">(EXAMPLE </span> 
-              <div class="indent-wrapper">
-              	<textarea id="design-recipe-example1_header"></textarea>
-              	<textarea id="design-recipe-example1_body"></textarea>
-                <span class="spacer">)</span>
-              </div>
-            </div>
-            <span class="error" id="design-recipe-example1_error"></span>
-            <hr/>
-            <div id="design-recipe-example2_wrapper">
-              <span class="spacer">(EXAMPLE </span>
-              <div class="indent-wrapper">
-               	 <textarea id="design-recipe-example2_header"></textarea>
-             	 <textarea id="design-recipe-example2_body"></textarea>
-	             <span class="spacer">)</span>
-              </div>
-            </div>
-            <span class="error" id="design-recipe-example2_error"></span>
-          </div>
+          	<div class="section" id="design-recipe-examples">
+            	<div id="design-recipe-example1_wrapper">
+              		<span class="spacer">(EXAMPLE </span> 
+              		<div class="indent-wrapper">
+              			<textarea id="design-recipe-example1_header"></textarea>
+              			<textarea id="design-recipe-example1_body"></textarea>
+                		<span class="spacer">)</span>
+              		</div>
+            	</div>
+            	<span class="error" id="design-recipe-example1_error"></span>
+            	<hr/>
+            	<div id="design-recipe-example2_wrapper">
+              		<span class="spacer">(EXAMPLE </span>
+              		<div class="indent-wrapper">
+               			<textarea id="design-recipe-example2_header"></textarea>
+             			<textarea id="design-recipe-example2_body"></textarea>
+	            		<span class="spacer">)</span>
+              		</div>
+            	</div>
+            	<span class="error" id="design-recipe-example2_error"></span>
+          	</div>
 
           
-          <div class="section" id="design-recipe-definition">
-            <div id="design-recipe-definition_wrapper">
-              <span class="spacer">(define </span>
-              <div class="indent-wrapper">
-              	<textarea id="design-recipe-definition_header"></textarea>
-              	<textarea id="design-recipe-definition_body"></textarea>
-              	<span class="spacer">)</span>
-              </div>
-            </div>
-            <span class="error" id="design-recipe-definition_error"></span>
-          </div>
+          	<div class="section" id="design-recipe-definition">
+            	<div id="design-recipe-definition_wrapper">
+            		<span class="spacer">(define </span>
+            		<div class="indent-wrapper">
+            			<textarea id="design-recipe-definition_header"></textarea>
+            			<textarea id="design-recipe-definition_body"></textarea>
+            			<span class="spacer">)</span>
+            		</div>
+            	</div>
+            	<span class="error" id="design-recipe-definition_error"></span>
+          	</div>
 
-	  <div class="toolbar">
-            <input type="button" 
-                   id="design-recipe-insertCode"
-                   class="button" 
-                   value="Insert" 
-                   style="float: right; color: black;"/>
-	    <input type="button" id="design-recipe-cancel" class="button" value="Cancel" style="float: left;" />
-	  </div>
-
-        </div>
+	  		<div class="toolbar">
+            	<input 	type="button" 
+               			id="design-recipe-insertCode"
+               			class="button" 
+               			value="Insert" 
+               			style="float: right; color: black;"/>
+	    		<input type="button" id="design-recipe-cancel" class="button" value="Cancel" style="float: left;" />
+	    	</div>
+	  	</div>
+	</div>
 
 
 

@@ -730,7 +730,7 @@ var initializeWidget = (function () {
             // document.getElementById('design-recipe-insertCode').disabled = true;
             pos = editor.getCursor(true);		// get the current cursor location
             pos.ch = 0;							// force the character to 0
-            var node= document.getElementById('design-recipe-form');
+            var node= document.getElementById('design-recipe-outer');
             connect(node, "click", function(event){event.target.focus(); event.stop(); return false;});
             editor.addWidget(pos, node, true);	// display the DR widget just below the line, and scroll so it's visible
             editor.removeLineClass(editor.getCursor().line,"text");
@@ -773,7 +773,7 @@ var initializeWidget = (function () {
         };
  
        var hideWidget = function (widget){
-            document.getElementById('design-recipe-form').style.left = '-1000px';
+            document.getElementById('design-recipe-outer').style.left = '-1000px';
             editor.removeLineClass(hlLine, "text");
             editor.focus();
             clearForm();
